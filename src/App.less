@@ -1,0 +1,282 @@
+@import '../node_modules/antd/lib/style/index.less';
+@import '../node_modules/antd/lib/alert/style/index.less';
+@import '../node_modules/antd/lib/button/style/index.less';
+@import '../node_modules/antd/lib/carousel/style/index.less';
+@import '../node_modules/antd/lib/config-provider/style/index.less';
+@import '../node_modules/antd/lib/drawer/style/index.less';
+@import '../node_modules/antd/lib/input/style/index.less';
+@import '../node_modules/antd/lib/layout/style/index.less';
+@import '../node_modules/antd/lib/select/style/index.less';
+
+* {
+  font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, 'MS PGothic', helvetica,
+    sans-serif;
+  vertical-align: baseline;
+  box-sizing: border-box;
+  letter-spacing: 0.06em;
+}
+.bebas-font {
+  font-family: 'Bebas Neue', helvetica, sans-serif;
+}
+
+.main-wrapper {
+  position: relative;
+  color: white;
+  img.top-bg-1 {
+    width: 100%;
+  }
+}
+
+// .top-bg-1 {
+//   // height: 100vh;
+//   width: 100vw;
+//   background-image: url('assets/02-Landing-c.png');
+//   background-repeat: no-repeat;
+//   background-position: center;
+//   background-size: cover;
+// }
+
+.top-left-text-wrapper {
+  position: absolute;
+  left: 50px;
+  top: 50px;
+  display: flex;
+  .co2 {
+    font-size: 60px;
+    line-height: 60px;
+    padding-right: 5px;
+    sub {
+      font-size: 35px;
+    }
+    border-right: 2px solid #ffffffaa;
+  }
+  .text-wrapper {
+    margin-left: 10px;
+  }
+}
+.tokyo-tower {
+  position: absolute;
+  top: 21vw;
+  left: 21.3vw;
+  transform: rotateZ(270deg);
+  font-size: 1.4vw;
+  transform-origin: top left;
+}
+.tokyo-tower-co2 {
+  position: absolute;
+  left: 25vw;
+  top: 3.3vw;
+  font-size: 1.3vw;
+  color: #ffffff82;
+}
+.year-text-before {
+  position: absolute;
+  left: 44.2vw;
+  top: 18vw;
+  font-size: 3.2vw;
+  transform: rotateZ(270deg);
+  transform-origin: top left;
+}
+.year-text-after {
+  position: absolute;
+  left: 56vw;
+  top: 34vw;
+  font-size: 3.2vw;
+  transform: rotateZ(270deg);
+  transform-origin: top left;
+}
+.overlay-img {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 42.3vw;
+}
+.mid-wrapper {
+  background: black;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  padding: 0 10vw;
+  text-align: center;
+}
+
+.forest-wrapper {
+  animation: scroll 200s linear infinite;
+  background: url('assets/forest.png');
+  color: #eee;
+  height: 100vh;
+  min-width: 360px;
+  width: 100%;
+  display: flex;
+  perspective: 1000px;
+  perspective-origin: 50% 50%;
+  .donut-wrapper {
+    width: 45%;
+    flex-shrink: 0;
+    background: #00000015;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .ring-wrapper {
+      width: 23vw;
+      height: 23vw;
+      background: url('assets/ring.png');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      padding: 5vw;
+      .donut-text-wrapper {
+        font-size: 1.4vw;
+        font-weight: 500;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        span {
+          font-size: 2.1vw;
+        }
+      }
+    }
+  }
+  .text-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    background: #000000a0;
+    height: 100%;
+    .inner-wrapper {
+      width: 30vw;
+      max-width: 580px;
+      h2 {
+        color: white;
+        font-size: ~'max(1.8vw, 24px)';
+        margin-bottom: ~'max(1.8vw, 24px)';
+        font-weight: bold;
+      }
+      p {
+        font-size: 16px;
+        & + p {
+          margin-bottom: 50px;
+        }
+      }
+      .car-logo-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        img {
+          width: 16%;
+          max-width: 60px;
+        }
+      }
+    }
+  }
+}
+
+@keyframes scroll {
+  100% {
+    background-position: 0px -3000px;
+  }
+}
+
+// @media (prefers-reduced-motion) {
+//   .forest-wrapper {
+//     animation: scroll 200s linear infinite;
+//   }
+// }
+.chart-container {
+  z-index: 0;
+  width: 41vw;
+  height: 42vw;
+  position: absolute;
+  top: 11vw;
+  left: 44vw;
+  &::before {
+    content: 'CO2 45000 KG';
+    position: absolute;
+    right: 0;
+    top: -1.9vw;
+    font-family: 'Bebas Neue';
+    font-size: 1.3vw;
+    color: #ffffff82;
+  }
+  table {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -999;
+    width: 100%;
+    height: 100%;
+    tr td {
+      width: 100%;
+      height: 98x;
+      border-top: solid 2px rgba(255, 255, 255, 0.11);
+    }
+  }
+}
+
+.bar {
+  // float: left;
+  position: absolute;
+  bottom: 0;
+  z-index: 99;
+  height: 35%;
+  width: ~'max(27px, 2.6vw)';
+  border-right: ~'max(12px, 1.155vw)' solid rgba(255, 255, 255, 0.33);
+  background-color: rgba(255, 255, 255, 0.6);
+  box-sizing: content-box;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
+
+.bar:before {
+  content: '';
+  position: absolute;
+  left: ~'min(-15px, -1.44vw)';
+  bottom: ~'max(7px, 0.67vw)';
+  height: 100%;
+  width: ~'max(15px, 1.44vw)';
+  background-color: rgba(255, 255, 255, 0.33);
+
+  -webkit-transform: skewY(45deg);
+}
+
+.bar:after {
+  content: '';
+  position: absolute;
+  top: ~'min(-15px, -1.44vw)';
+  left: ~'min(-8px, -0.77vw)';
+  width: ~'max(40px, 3.85vw)';
+  height: ~'max(15px, 1.44vw)';
+  background-color: rgba(255, 255, 255, 0.65);
+  -moz-transform: skewX(45deg);
+  -o-transform: skewX(45deg);
+  -webkit-transform: skewX(45deg);
+  transform: skewX(45deg);
+}
+
+.bar-before {
+  left: 6.3vw;
+  // height: 41.6vw;
+}
+
+.bar-after {
+  left: 17.8vw;
+  // height: 25.4vw;
+}
+
+.year-select {
+  position: absolute;
+  right: 25px;
+  width: 120px;
+  top: 25px;
+  .ant-select-selector {
+    border-radius: 25px !important;
+    .ant-select-selection-item {
+      text-align: center;
+    }
+  }
+}

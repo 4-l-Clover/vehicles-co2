@@ -12,16 +12,16 @@ import { useSpring, a } from 'react-spring';
 const { Option } = Select;
 
 const CO2_AMOUNT = {
-  '2020': [41.6, 25.4],
-  '2019': [41.7, 28],
-  '2018': [41.8, 29.2],
-  '2017': [41.9, 30],
-  '2016': [42, 30.7],
-  '2015': [42.1, 31],
-  '2014': [42.2, 31.3],
-  '2013': [42.3, 31.2],
-  '2012': [42.4, 31.1],
-  '2011': [42.5, 31]
+  '2020': [51.1, 39.2],
+  '2019': [50, 39.6],
+  '2018': [51.1, 40],
+  '2017': [50.7, 39.8],
+  '2016': [50.2, 40.2],
+  '2015': [49.3, 40.4],
+  '2014': [49, 39.7],
+  '2013': [50, 41],
+  '2012': [49.5, 40],
+  '2011': [49, 42]
 };
 
 function App() {
@@ -34,19 +34,29 @@ function App() {
     from: { y_before: 0, y_after: 0 },
     y_before: CO2_AMOUNT[year][0],
     y_after: CO2_AMOUNT[year][1],
-    config: { duration: 1000 }
+    config: { duration: 800 }
   });
 
   return (
     <div className="main-wrapper">
       <img src={TopBackground1} alt="background" className="top-bg-1" />
-      <Select value={year} onChange={handleChangeYear} className="year-select" dropdownClassName="year-select-dropdown">
-        {new Array(10).fill(0).map((_, index) => (
-          <Option key={index} value={2020 - index}>
-            {2020 - index}
-          </Option>
-        ))}
-      </Select>
+      <div className="year-wrapper">
+        <Select
+          value={year}
+          onChange={handleChangeYear}
+          className="year-select"
+          dropdownClassName="year-select-dropdown"
+        >
+          {new Array(10).fill(0).map((_, index) => (
+            <Option key={index} value={2020 - index}>
+              {2020 - index}年
+            </Option>
+          ))}
+        </Select>
+        <Select defaultValue={8} className="year-select" dropdownClassName="year-select-dropdown" disabled>
+          <Option value={8}>8月</Option>
+        </Select>
+      </div>
       <div className="chart-container">
         <table>
           <tbody>
@@ -57,6 +67,7 @@ function App() {
             ))}
           </tbody>
         </table>
+        <div className="bar bar-tower" />
         <a.div className="bar bar-before" style={{ height: y_before.to((y) => `${y}vw`) }}></a.div>
         <a.div className="bar bar-after" style={{ height: y_after.to((y) => `${y}vw`) }}></a.div>
       </div>
@@ -71,19 +82,21 @@ function App() {
         </div>
       </div>
       <div className="tokyo-tower">東京タワー 332.9m</div>
-      <div className="tokyo-tower-co2 bebas-font">CO2 6000 KG</div>
+      <div className="tokyo-tower-co2 bebas-font">CO2 532,640 M3</div>
       <div className="year-text-before bebas-font">{year - 7}</div>
       <div className="year-text-after bebas-font">{year}</div>
       <img src={OverlayImg} alt="down-bg" className="overlay-img" />
-      <div className="mid-wrapper">二酸化炭素排出量の削減はさらなる植林と同等の効果があります</div>
+      <div className="mid-wrapper">
+        成長中の樹木は二酸化炭素を吸収し蓄積します。新しいクルマに乗り換え、二酸化炭素排出量を削減していくことは、植林を進めていくことと同じように温暖化を抑制する効果があります。
+      </div>
       <div className="forest-wrapper">
         <div className="donut-wrapper">
           <div className="ring-wrapper">
             <div className="donut-text-wrapper">
-              <div className="">{`${year - 7}年から`}</div>
-              <div className="">{`${year}年までに`}</div>
+              <div className="">{`${year - 7}年8月から`}</div>
+              <div className="">{`${year}年8月までに`}</div>
               <div className="">
-                <span>12,000</span>本の
+                <span>5,216,742</span>本の
               </div>
               <div className="">植林を実施した</div>
               <div className="">ことに相当</div>
@@ -92,18 +105,29 @@ function App() {
         </div>
         <div className="text-wrapper">
           <div className="inner-wrapper">
-            <h2>より燃料効率のいい車が救う森林</h2>
-            <p>{`${
-              year - 7
-            }年と${year}年を比較して、最新の車を販売することにより、二酸化炭素の排出量を4000kg 削減。`}</p>
+            <h2>新しいクルマに乗り換えることにより、二酸化炭素排出量の削減を目指します</h2>
             <p>
-              二酸化炭素が60kg減れば、郊外/都市部に樹木を1本植えることに等しくなります。より新しく、燃料効率の良い車を運転することで、環境に優しい暮らしを実現します。
+              二酸化炭素排出量を60kg削減することは、郊外/都市部にイロハモミジを1本植えることと等しい効果があるとされています。(*)
+            </p>
+            <p>
+              {`${year - 7}年8月と${year}年8月の新車販売実績に基づいて10万台あたりの二酸化炭素排出量を計算すると、
+              イロハモミジ5,216,742本を植林するのと同等の効果があると考えられます。`}
+            </p>
+            <p>
+              (*){' '}
+              <a
+                href="https://www.epa.gov/energy/greenhouse-gases-equivalencies-calculator-calculations-and-references"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://www.epa.gov/energy/greenhouse-gases-equivalencies-calculator-calculations-and-references
+              </a>
             </p>
             <div className="car-logo-wrapper">
-              <img src={MitsubishiImg} alt="mitsubishi" />
-              <img src={HondaImg} alt="honda" />
-              <img src={NissanImg} alt="nissan" />
-              <img src={ToyotaImg} alt="toyota" />
+              <img src={ToyotaImg} alt="toyota" className="toyota-img" />
+              <img src={MitsubishiImg} alt="mitsubishi" className="mitsubishi-img" />
+              <img src={HondaImg} alt="honda" className="honda-img" />
+              <img src={NissanImg} alt="nissan" className="nissan-img" />
             </div>
           </div>
         </div>

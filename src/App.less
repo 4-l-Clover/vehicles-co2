@@ -65,7 +65,7 @@
 .tokyo-tower-co2 {
   position: absolute;
   left: 25vw;
-  top: 3.3vw;
+  top: 2.7vw;
   font-size: 1.3vw;
   color: #ffffff82;
 }
@@ -97,7 +97,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 30px;
+  font-size: ~'min(max(1.7vw, 17px), 32px)';
   padding: 0 10vw;
   text-align: center;
 }
@@ -105,10 +105,11 @@
 .forest-wrapper {
   animation: scroll 200s linear infinite;
   background: url('assets/forest.png');
+  background-size: cover;
   color: #eee;
   height: 100vh;
-  min-width: 360px;
-  width: 100%;
+  // min-width: 360px;
+  // width: 100%;
   display: flex;
   perspective: 1000px;
   perspective-origin: 50% 50%;
@@ -136,7 +137,7 @@
         align-items: center;
         height: 100%;
         span {
-          font-size: 2.1vw;
+          font-size: 1.8vw;
         }
       }
     }
@@ -159,8 +160,11 @@
       }
       p {
         font-size: 16px;
-        & + p {
+        & + p + p {
           margin-bottom: 50px;
+          a {
+            color: white;
+          }
         }
       }
       .car-logo-wrapper {
@@ -170,6 +174,14 @@
         img {
           width: 16%;
           max-width: 60px;
+          &.toyota-img {
+            width: 17%;
+            max-width: 70px;
+          }
+          &.mitsubishi-img {
+            width: 14%;
+            max-width: 50px;
+          }
         }
       }
     }
@@ -194,15 +206,6 @@
   position: absolute;
   top: 11vw;
   left: 44vw;
-  &::before {
-    content: 'CO2 45000 KG';
-    position: absolute;
-    right: 0;
-    top: -1.9vw;
-    font-family: 'Bebas Neue';
-    font-size: 1.3vw;
-    color: #ffffff82;
-  }
   table {
     position: absolute;
     top: 0;
@@ -236,7 +239,7 @@
 .bar:before {
   content: '';
   position: absolute;
-  left: ~'min(-15px, -1.44vw)';
+  left: ~'min(-15px, -1.435vw)';
   bottom: ~'max(7px, 0.67vw)';
   height: 100%;
   width: ~'max(15px, 1.44vw)';
@@ -259,6 +262,10 @@
   transform: skewX(45deg);
 }
 
+.bar-tower {
+  left: -13.5vw;
+  height: 46.9vw;
+}
 .bar-before {
   left: 6.3vw;
   // height: 41.6vw;
@@ -269,15 +276,22 @@
   // height: 25.4vw;
 }
 
-.year-select {
+.year-wrapper {
   position: absolute;
   right: 25px;
-  width: 120px;
   top: 25px;
-  .ant-select-selector {
-    border-radius: 25px !important;
-    .ant-select-selection-item {
-      text-align: center;
+  display: flex;
+  align-items: center;
+  .year-select {
+    width: 100px;
+    & + .year-select {
+      margin-left: 10px;
+    }
+    .ant-select-selector {
+      border-radius: 25px !important;
+      .ant-select-selection-item {
+        text-align: center;
+      }
     }
   }
 }
